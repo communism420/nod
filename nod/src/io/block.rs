@@ -442,13 +442,10 @@ mod tests {
 
         let mut out = Vec::new();
         block.append_hash_exceptions(163, 0, &mut out).unwrap();
-        assert_eq!(
-            out,
-            vec![
-                WIAException { offset: 0.into(), hash: first.hash },
-                WIAException { offset: 0x03ec.into(), hash: last.hash },
-            ]
-        );
+        assert_eq!(out, vec![WIAException { offset: 0.into(), hash: first.hash }, WIAException {
+            offset: 0x03ec.into(),
+            hash: last.hash
+        },]);
 
         out.clear();
         block.append_hash_exceptions(163, 63, &mut out).unwrap();
